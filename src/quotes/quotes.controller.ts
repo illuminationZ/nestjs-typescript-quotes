@@ -8,27 +8,27 @@ export class QuotesController {
     constructor(private readonly quotesService: QuotesService) {}
 
     @Post()
-    create(@Body() createQuoteDto: CreateQuoteDto) {
+    async create(@Body() createQuoteDto: CreateQuoteDto) {
         return this.quotesService.create(createQuoteDto);
     }
 
     @Get()
-    findAll() {
+    async findAll() {
         return this.quotesService.findAll();
     }
 
     @Get(':id')
-    findOne(@Param('id') id: string) {
-        return this.quotesService.findOne(+id);
+    async findOne(@Param('id') id: string) {
+        return this.quotesService.findOne(id);
     }
 
     @Patch(':id')
-    update(@Param('id') id: string, @Body() updateQuoteDto: UpdateQuoteDto) {
-        return this.quotesService.update(+id, updateQuoteDto);
+    async update(@Param('id') id: string, @Body() updateQuoteDto: UpdateQuoteDto) {
+        return this.quotesService.update(id, updateQuoteDto);
     }
 
     @Delete(':id')
-    remove(@Param('id') id: string) {
-        return this.quotesService.remove(+id);
+    async remove(@Param('id') id: string) {
+        return this.quotesService.remove(id);
     }
 }
