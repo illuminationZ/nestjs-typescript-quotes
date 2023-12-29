@@ -7,7 +7,7 @@ import { SwaggerModule, DocumentBuilder, SwaggerCustomOptions } from '@nestjs/sw
  * @param {INestApplication} app
  */
 export function setupSwagger(app: INestApplication): void {
-    const options = new DocumentBuilder().setTitle('Quotes API Docs').setDescription('### Quotes API for management').setVersion('1.0').build();
+    const options = new DocumentBuilder().setTitle('Quotes API Docs').setDescription('### Quotes API for management').setVersion('1.0.0').build();
 
     const document = SwaggerModule.createDocument(app, options);
     const customSiteTitle: SwaggerCustomOptions = {
