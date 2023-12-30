@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { QuotesService } from './quotes.service';
 import { CreateQuoteDto } from './dto/create-quote.dto';
 import { UpdateQuoteDto } from './dto/update-quote.dto';
-import { ApiBadRequestResponse, ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBadRequestResponse, ApiCreatedResponse, ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('quotes')
 @Controller('quotes')
@@ -16,6 +16,7 @@ export class QuotesController {
      */
     @Post()
     @ApiOperation({ summary: 'Create a quote' })
+    @ApiCreatedResponse({ description: 'Quote created successfully' })
     @ApiOkResponse({ description: 'Quote created successfully' })
     @ApiBadRequestResponse({ description: 'Bad request' })
     async create(@Body() createQuoteDto: CreateQuoteDto) {
@@ -32,6 +33,18 @@ export class QuotesController {
     @ApiBadRequestResponse({ description: 'Bad request' })
     async findAll() {
         return this.quotesService.findAll();
+    }
+
+    /**
+     *
+     * @returns
+     */
+    @Get('random')
+    @ApiOperation({ summary: 'Get a random quote' })
+    @ApiOkResponse({ description: 'Random quote retrieved successfully' })
+    @ApiBadRequestResponse({ description: 'Bad request' })
+    async random() {
+        return await this.quotesService.random();
     }
 
     /**
