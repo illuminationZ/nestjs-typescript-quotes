@@ -2,8 +2,8 @@
     "version": 2,
     "routes": [
         {
-            "src": "src/main.ts",
-            "dest": "/api/docs",
+            "src": "/(.*)",
+            "dest": "/src/main.ts",
             "methods": [
                 "GET",
                 "POST",
