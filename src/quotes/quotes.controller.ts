@@ -31,7 +31,7 @@ export class QuotesController {
     @ApiOperation({ summary: 'Get all quotes' })
     @ApiOkResponse({ description: 'Quotes retrieved successfully' })
     @ApiBadRequestResponse({ description: 'Bad request' })
-    @ApiQuery({ name: 'content', required: false })
+    @ApiQuery({ name: 'content', required: false, description: 'Search by content' })
     async findAll(@Query('content') content: string) {
         return this.quotesService.findAll(content);
     }
