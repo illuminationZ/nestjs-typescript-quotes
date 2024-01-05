@@ -1,8 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 import { QuotesService } from './quotes.service';
 import { CreateQuoteDto } from './dto/create-quote.dto';
 import { UpdateQuoteDto } from './dto/update-quote.dto';
-import { ApiBadRequestResponse, ApiCreatedResponse, ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBadRequestResponse, ApiCreatedResponse, ApiOkResponse, ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('quotes')
 @Controller('quotes')
@@ -31,8 +31,9 @@ export class QuotesController {
     @ApiOperation({ summary: 'Get all quotes' })
     @ApiOkResponse({ description: 'Quotes retrieved successfully' })
     @ApiBadRequestResponse({ description: 'Bad request' })
-    async findAll() {
-        return this.quotesService.findAll();
+    @ApiQuery({ name: 'content', required: false })
+    async findAll(@Query('content') content: string) {
+        return this.quotesService.findAll(content);
     }
 
     /**
