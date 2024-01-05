@@ -32,8 +32,14 @@ export class QuotesService {
      *
      * @returns
      */
-    async findAll(): Promise<{ data: QuoteEntity[] }> {
-        const quotes = await this.prismaService.quote.findMany();
+    async findAll(content: string): Promise<{ data: QuoteEntity[] }> {
+        const quotes = await this.prismaService.quote.findMany({
+            where: {
+                content: {
+                    contains: content,
+                },
+            },
+        });
 
         return {
             data: quotes.map((quote) => new QuoteEntity(quote)),
