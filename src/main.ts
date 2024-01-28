@@ -13,7 +13,7 @@ async function bootstrap() {
     // NOTE - this is for helmet
     app.use(helmet());
 
-    // NOTE - This is for cors
+    // NOTE - This is for cors .
     app.enableCors();
 
     // NOTE - This is for the port and host
