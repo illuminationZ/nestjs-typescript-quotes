@@ -4,10 +4,11 @@
 name: Node.js CI Testing
 
 on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+  workflow_run:
+    workflows: ["CodeQL"]
+    branches: [master]
+    types:
+      - completed
 
 jobs:
   build:
@@ -28,5 +29,5 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build --if-present
-    - run: npm test
-    - run: npm test:e2e
+    - run: npm run test
+    - run: npm run test:e2e
