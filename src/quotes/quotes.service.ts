@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateQuoteDto } from './dto/create-quote.dto';
 import { UpdateQuoteDto } from './dto/update-quote.dto';
-import { PrismaService } from 'src/configs/prisma/prisma.service';
+import { PrismaService } from '.././configs/prisma/prisma.service';
 import { QuoteEntity, QuoteResponse } from './entities/quote.entity';
 
 @Injectable()
