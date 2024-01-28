@@ -16,7 +16,7 @@ async function bootstrap() {
     // NOTE - This is for cors
     app.enableCors();
 
-    // test
+    // test2
 
     // NOTE - This is for the port and host
     await app.listen(loadEnv().PORT, '0.0.0.0', async () => {
