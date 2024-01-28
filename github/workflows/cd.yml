@@ -5,7 +5,7 @@ env:
 on:
   push:
     branches:
-      - quotes-filter
+      - master
 jobs:
   Deploy-Production:
     runs-on: ubuntu-latest
